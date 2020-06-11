@@ -17,7 +17,7 @@
                             <i class="fa fa-clock-o"></i> <span style="font-size: 15px;">{{ $job->type }}</span>
                         </td>
                         <td><i class="fa fa-map-marker"></i> {{ $job->address }}</td>
-                        <td><i class="fa fa-globe"></i> {{ $job->created_at->diffForHumans() }}</td>
+                        <td><i class="fa fa-calendar"></i> {{ $job->created_at->diffForHumans() }}</td>
                     </tr>
                 @endforeach
                 </tbody>

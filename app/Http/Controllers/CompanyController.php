@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class CompanyController extends Controller
 {
     //
-    public function show($id, $name){
+    public function show($id, $company){
         $company = Company::findOrfail($id);
         return view('companies.show', compact('company'));
     }

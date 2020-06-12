@@ -24,3 +24,14 @@ Route::get('/jobs/{id}/{job}', 'JobController@show')->name('job.show');
 
 // Companies
 Route::get('/company/{id}/{company}', 'CompanyController@show')->name('company.show');
+
+
+// User Profile
+Route::get('user/profile', 'UserProfileController@index');
+Route::post('user/profile/update', 'UserProfileController@profileSeekerUpdate')->name('profile.seeker.update');
+Route::post('user/profile/update/cover', 'UserProfileController@profileSeekerCover')->name('profile.seeker.cover');
+Route::post('user/profile/update/resume', 'UserProfileController@profileSeekerResume')->name('profile.seeker.resume');
+Route::post('user/profile/update/avatar', 'UserProfileController@profileSeekerAvatar')->name('profile.seeker.avatar');
+
+// Employer
+Route::get('employer/registration', 'UserProfileController@index');

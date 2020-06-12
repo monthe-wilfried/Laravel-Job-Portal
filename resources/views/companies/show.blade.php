@@ -5,11 +5,11 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="company-profile">
-                    <img src="{{ asset($company->cover_photo) }}" style="width: 100%;">
+                    <img src="{{ $company->cover_photo ? asset($company->cover_photo) : asset('cover/tumblr-image-sizes-banner.png') }}" style="width: 100%;">
                     <div class="company-description">
                         <div class="row" style="padding-top: 20px; padding-bottom: 20px;">
                             <div class="col-sm-2">
-                                <img src="{{ asset($company->logo) }}" class="img-fluid img-thumbnail">
+                                <img src="{{ asset($company->logo) ?? 'Company Logo' }}" class="img-fluid img-thumbnail">
                             </div>
                             <div class="col-sm-10">
                                 <p>{{ $company->description }}</p>

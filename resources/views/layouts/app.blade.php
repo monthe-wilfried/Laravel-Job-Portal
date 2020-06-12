@@ -46,11 +46,16 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Job Seeker Registration') }}</a>
                                 </li>
                             @endif
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('employer') }}">{{ __('Employer Registration') }}</a>
+                            </li>
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -58,6 +63,11 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    @if(Auth::user()->user_type == 'seeker')
+                                        <a class="dropdown-item" href="{{ route('user.profile') }}">{{ __('Profile') }}</a>
+                                    @elseif(Auth::user()->user_type == 'employer')
+                                        <a class="dropdown-item" href="{{ route('company.profile') }}">{{ __('Company Profile') }}</a>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

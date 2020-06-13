@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Auth;
 class CompanyController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('employer', ['except'=>['show']]);
+    }
+
     public function show($id, $company){
         $company = Company::findOrfail($id);
         return view('companies.show', compact('company'));

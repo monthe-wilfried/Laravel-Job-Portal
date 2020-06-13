@@ -20,7 +20,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Jobs
 Route::get('/jobs/{id}/{job}', 'JobController@show')->name('job.show');
-
+Route::get('/jobs/create', 'JobController@create')->name('job.create');
+Route::post('/jobs/store', 'JobController@store')->name('job.store');
+Route::get('/jobs/my-jobs', 'JobController@myJobs')->name('job.my.jobs');
+Route::get('/jobs/edit/{id}/{slug}', 'JobController@edit')->name('job.edit');
+Route::post('/jobs/update', 'JobController@update')->name('job.update');
+/////////////////////////////// Apply ///////////////////////////
+Route::get('/applications/{id}', 'JobController@apply')->name('apply');
+Route::get('/jobs/applications', 'JobController@applicants')->name('jobs.applicants');
+Route::get('/jobs/all', 'JobController@allJobs')->name('all.jobs');
 
 // Companies
 Route::get('/company/{id}/{company}', 'CompanyController@show')->name('company.show');
@@ -40,3 +48,4 @@ Route::post('user/profile/update/avatar', 'UserProfileController@profileSeekerAv
 // Employer
 Route::view('employer/registration', 'auth.employer-registration')->name('employer');
 Route::post('employer/register', 'EmployerRegisterController@employerRegister')->name('employer.register');
+

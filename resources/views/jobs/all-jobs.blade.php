@@ -22,33 +22,10 @@
                 @endforeach
                 </tbody>
             </table>
+            {{ $jobs->render() }}
         </div>
 
-        <div>
-            <a href="{{ route('all.jobs') }}" class="btn btn-dark btn-lg btn-block">Browse all Jobs</a>
-        </div>
-        <br><br>
-        <h1>Featured Companies</h1>
-        <br>
-    </div>
 
-    <div class="container">
-        <div class="row">
-            @foreach($companies as $company)
-                <div class="col-md-3">
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{ $company->cover_photo ? asset($company->cover_photo) : asset('cover/tumblr-image-sizes-banner.png') }}" class="card-img-top" height="150">
-                        <div class="card-body">
-                            <h5 class="card-title"><strong>{{ $company->company_name }}</strong></h5>
-                            <p class="card-text">{{ Str::limit($company->description, 30) }}</p>
-                            <a href="{{ route('company.show', [$company->id, $company->slug]) }}" class="btn btn-outline-primary">Visit Company</a>
-                        </div>
-                    </div>
-                    <br>
-                </div>
-            @endforeach
-        </div>
-    </div>
 @endsection
 
 @section('scripts')

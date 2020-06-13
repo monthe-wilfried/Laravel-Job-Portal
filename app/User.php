@@ -46,5 +46,9 @@ class User extends Authenticatable
         return $this->hasOne(Company::class);
     }
 
+    public function jobs(){
+        return $this->belongsToMany(Job::class)->withTimestamps();
+    }
+
 
 }

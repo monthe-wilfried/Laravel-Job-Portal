@@ -10,7 +10,15 @@
     <title>{{ config('app.name', 'JobPortal') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}" ></script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script defer src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( "#datepicker" ).datepicker();
+        } );
+    </script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -21,6 +29,9 @@
     <!-- Styles -->
     <script src="https://use.fontawesome.com/18e20aed98.js"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 </head>
 <body>
     <div id="app">
@@ -57,7 +68,14 @@
                                 <a class="nav-link" href="{{ route('employer') }}">{{ __('Employer Registration') }}</a>
                             </li>
                         @else
+                            @if(Auth::user()->user_type == 'employer')
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('job.create') }}"><span class="btn btn-secondary">{{ __('Post a Job') }}</span></a>
+                                </li>
+                            @endif
+
                             <li class="nav-item dropdown">
+
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
@@ -67,6 +85,8 @@
                                         <a class="dropdown-item" href="{{ route('user.profile') }}">{{ __('Profile') }}</a>
                                     @elseif(Auth::user()->user_type == 'employer')
                                         <a class="dropdown-item" href="{{ route('company.profile') }}">{{ __('Company Profile') }}</a>
+                                        <a class="dropdown-item" href="{{ route('jobs.applicants') }}">{{ __('Applicants') }}</a>
+                                        <a class="dropdown-item" href="{{ route('job.my.jobs') }}">{{ __('My Jobs') }}</a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

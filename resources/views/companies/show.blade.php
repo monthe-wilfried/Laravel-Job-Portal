@@ -9,7 +9,7 @@
                     <div class="company-description">
                         <div class="row" style="padding-top: 20px; padding-bottom: 20px;">
                             <div class="col-sm-2">
-                                <img src="{{ asset($company->logo) ?? 'Company Logo' }}" class="img-fluid img-thumbnail">
+                                <img src="{{ $company->logo ? asset($company->logo) : asset('avatar/man.jpg') }}" class="img-fluid img-thumbnail">
                             </div>
                             <div class="col-sm-10">
                                 <p>{{ $company->description }}</p>

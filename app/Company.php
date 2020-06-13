@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Company extends Model
 {
@@ -26,6 +27,10 @@ class Company extends Model
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function getCompanyNameAttribute($value){
+        return Str::title($value);
     }
 
 

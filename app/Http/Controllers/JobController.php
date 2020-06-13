@@ -15,7 +15,7 @@ class JobController extends Controller
     //
     public function __construct()
     {
-        $this->middleware('employer', ['except'=>['index', 'show', 'apply', 'allJobs']]);
+        $this->middleware(['employer', 'verified'], ['except'=>['index', 'show', 'apply', 'allJobs']]);
     }
 
     public function index(){
@@ -74,9 +74,42 @@ class JobController extends Controller
         return view('jobs.applicants', compact('jobs'));
     }
 
-    public function allJobs(){
-        $jobs = Job::latest()->where('status', 1)->paginate(10);
+    public function allJobs(Request $request){
+        $keyword = $request->title;
+        $type = $request->type;
+        $category = $request->category_id;
+        $address = $request->address;
+
+        if ($keyword){
+            $jobs = Job::where('title', 'LIKE', '%'.$keyword.'%')->where('status', 1)->paginate(10);
+        }
+        elseif ($type){
+            $jobs = Job::where('type', $type)->where('status', 1)->paginate(10);
+        }
+        elseif ($category){
+            $jobs = Job::where('category_id', $category)->where('status', 1)->paginate(10);
+        }
+        elseif ($address){
+            $jobs = Job::where('address', 'LIKE', '%'.$address.'%')->where('status', 1)->paginate(10);
+        }
+        else{
+            $jobs = Job::latest()->where('status', 1)->paginate(10);
+        }
+
         return view('jobs.all-jobs', compact('jobs'));
+//        if ($keyword || $type || $category || $address){
+//            $jobs = Job::where('title', 'LIKE', '%'.$keyword.'%')
+//                ->where('type', $type)
+//                ->where('category_id', $category)
+//                ->orWhere('address', 'LIKE', '%'.$address.'%')
+//                ->paginate(10);
+//            return view('jobs.all-jobs', compact('jobs'));
+//        }
+//        else{
+//            $jobs = Job::latest()->where('status', 1)->paginate(10);
+//
+//        }
+
     }
 
 }

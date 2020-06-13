@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', 'JobController@index');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -26,7 +26,7 @@ Route::get('/jobs/my-jobs', 'JobController@myJobs')->name('job.my.jobs');
 Route::get('/jobs/edit/{id}/{slug}', 'JobController@edit')->name('job.edit');
 Route::post('/jobs/update', 'JobController@update')->name('job.update');
 /////////////////////////////// Apply ///////////////////////////
-Route::get('/applications/{id}', 'JobController@apply')->name('apply');
+Route::get('/applications/{id}', 'JobController@apply')->name('apply')->middleware('verified');
 Route::get('/jobs/applications', 'JobController@applicants')->name('jobs.applicants');
 Route::get('/jobs/all', 'JobController@allJobs')->name('all.jobs');
 

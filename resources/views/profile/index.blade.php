@@ -90,8 +90,18 @@
                         <li class="list-group-item"><strong>Gender:</strong><span class="float-right">{{ ucfirst(Auth::user()->profile->gender) }}</span></li>
                         <li class="list-group-item"><strong>Member Since:</strong><span class="float-right">{{ date('F j, Y', strtotime(Auth::user()->created_at)) }}</span></li>
                         <li class="list-group-item">
-                            <strong><i class="fa fa-file-pdf-o"></i> <a href="{{ Auth::user()->profile->cover_letter ? asset(Auth::user()->profile->cover_letter) : 'Upload your cover letter'}}" target="_blank">Cover Letter</a></strong>
-                            <span class="float-right"><strong><i class="fa fa-file-pdf-o"></i> <a href="{{ Auth::user()->profile->resume ? asset(Auth::user()->profile->resume) : 'Upload your resume' }}" target="_blank">Resume</a></strong></span>
+                            @if(Auth::user()->profile->cover_letter)
+                                <strong><i class="fa fa-file-pdf-o"></i> <a href="{{ asset(Auth::user()->profile->cover_letter) }}" target="_blank">Cover Letter</a></strong>
+                            @else
+                                <strong style="color: red">Upload your Cover Letter</strong>
+                            @endif
+
+                            @if(Auth::user()->profile->resume)
+                                <span class="float-right"><strong><i class="fa fa-file-pdf-o"></i> <a href="{{ asset(Auth::user()->profile->resume) }}" target="_blank">Resume</a></strong></span>
+                            @else
+                                <strong><span class="float-right" style="color: red">Upload your Resume</span></strong>
+                            @endif
+
 
                         </li>
                     </ul>

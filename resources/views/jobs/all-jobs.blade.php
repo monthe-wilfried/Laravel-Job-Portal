@@ -2,9 +2,50 @@
 
 @section('content')
     <div class="container">
-        <h1>Recent Jobs</h1>
-        <br>
         <div class="row justify-content-center">
+            <form action="{{ route('all.jobs') }}" method="get" style="margin-top: 3rem;">
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label for="Keyword">Keyword&nbsp;</label>
+                        <input type="text" name="title" class="form-control" style="margin-right: 5px">
+                    </div>
+
+                    <div class="form-group">
+                        @php
+                            $types = ['casual', 'fulltime', 'part-time'];
+                        @endphp
+                        <label for="type">Employment Type&nbsp;</label>
+                        <select name="type" class="form-control" style="margin-right: 5px">
+                            <option value="">Select...</option>
+                            @foreach($types as $type)
+                                <option value="{{ $type }}">{{ $type }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Category&nbsp;</label>
+                        <select name="category_id" class="form-control" style="margin-right: 5px">
+                            <option value="">Select...</option>
+                            @foreach(\App\Category::all() as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address&nbsp;</label>
+                        <input type="text" name="address" class="form-control" style="margin-right: 5px">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Search" class="btn btn-outline-dark">
+                    </div>
+                </div>
+                <br>
+            </form>
+
+
             <table class="table table-hover">
                 <thead>
                 </thead>
@@ -22,7 +63,7 @@
                 @endforeach
                 </tbody>
             </table>
-            {{ $jobs->render() }}
+            {{ $jobs->appends(Request::except('page'))->render() }}
         </div>
 
 

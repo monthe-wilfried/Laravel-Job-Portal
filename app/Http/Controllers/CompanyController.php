@@ -13,7 +13,7 @@ class CompanyController extends Controller
     //
     public function __construct()
     {
-        $this->middleware('employer', ['except'=>['show']]);
+        $this->middleware(['employer', 'verified'], ['except'=>['show']]);
     }
 
     public function show($id, $company){

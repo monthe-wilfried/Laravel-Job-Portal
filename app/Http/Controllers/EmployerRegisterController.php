@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use App\Profile;
+use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -21,6 +22,7 @@ class EmployerRegisterController extends Controller
 //            'date_of_birth' => 'required'
 //        ]);
 //    }
+
 
     protected function employerRegister(Request $request)
     {
@@ -43,6 +45,6 @@ class EmployerRegisterController extends Controller
             'slug' => Str::slug($request->company_name),
         ]);
 
-        return redirect()->route('login')->with('success', 'Company created successfully!');
+        return redirect()->route('login')->with('info', 'Please verify your email by clicking the link sent to your email address.');
     }
 }

@@ -45,6 +45,8 @@ class EmployerRegisterController extends Controller
             'slug' => Str::slug($request->company_name),
         ]);
 
+        $user->sendEmailVerificationNotification();
+
         return redirect()->route('login')->with('info', 'Please verify your email by clicking the link sent to your email address.');
     }
 }

@@ -12,15 +12,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7911c4d4-c701-4c1f-a116-faef9d898bf0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CompanyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CompanyController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployerRegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployerRegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/JobController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/JobController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/jobs/all-jobs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/jobs/all-jobs.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/profile/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/mail.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +176,7 @@
       <option name="presentableId" value="Default" />
       <updated>1591800078794</updated>
       <workItem from="1591800080060" duration="84739000" />
-      <workItem from="1592073032862" duration="16649000" />
+      <workItem from="1592073032862" duration="20474000" />
     </task>
     <servers />
   </component>
@@ -234,5 +227,9 @@
       <screen x="-1920" y="9" width="1920" height="1040" />
     </state>
     <state x="-1125" y="452" key="NewPhpFileDialog/0.0.1920.1040/-1920.9.1920.1040@-1920.9.1920.1040" timestamp="1592080135209" />
+    <state x="-1297" y="234" width="672" height="678" key="search.everywhere.popup" timestamp="1592093303557">
+      <screen x="-1920" y="9" width="1920" height="1040" />
+    </state>
+    <state x="-1297" y="234" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.9.1920.1040@-1920.9.1920.1040" timestamp="1592093303557" />
   </component>
 </project>

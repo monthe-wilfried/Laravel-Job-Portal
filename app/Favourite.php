@@ -11,4 +11,5 @@ class Favourite extends Model
         'user_id',
         'job_id',
     ];
+
 }

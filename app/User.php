@@ -50,5 +50,9 @@ class User extends Authenticatable  implements MustVerifyEmail
         return $this->belongsToMany(Job::class)->withTimestamps();
     }
 
+    public function favourites()
+    {
+        return $this->belongsToMany(Job::class, 'favourites', 'user_id', 'job_id')->withTimestamps();
+    }
 
 }

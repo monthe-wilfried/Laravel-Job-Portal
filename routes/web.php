@@ -30,6 +30,11 @@ Route::get('/applications/{id}', 'JobController@apply')->name('apply')->middlewa
 Route::get('/jobs/applications', 'JobController@applicants')->name('jobs.applicants');
 Route::get('/jobs/all', 'JobController@allJobs')->name('all.jobs');
 
+///////////////////////////Save and Unsave Jobs /////////////////
+Route::get('/save/{id}', 'FavouriteController@saveJob');
+Route::get('/unsave/{id}', 'FavouriteController@unSaveJob');
+
+
 // Companies
 Route::get('/company/{id}/{company}', 'CompanyController@show')->name('company.show');
 Route::get('/company/profile', 'CompanyController@companyProfile')->name('company.profile');

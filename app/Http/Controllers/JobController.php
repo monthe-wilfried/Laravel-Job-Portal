@@ -66,7 +66,6 @@ class JobController extends Controller
         $user_id = Auth::id();
         $job = Job::findOrFail($id);
         $job->users()->attach($user_id);
-        return redirect()->back()->with('success', 'Application sent successfully!');
     }
 
     public function applicants(){

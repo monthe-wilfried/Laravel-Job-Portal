@@ -32,10 +32,12 @@
                 </div>
                 @if(Auth::check() && Auth::user()->user_type=='seeker')
                     @if(!$job->checkApplication())
-                        <a href="{{ route('apply', $job->id) }}" class="btn btn-sm btn-dark btn-block"><i class="fa fa-check" aria-hidden="true"></i> Apply</a>
+                        <apply-component :jobid="{{ $job->id }}"></apply-component>
                     @else
                         <span class="btn btn-block" style="background-color: rgba(131,146,143,0.89); color: white; cursor: default;">Already Applied!</span>
                     @endif
+                    <br>
+                    <favourite-component :jobid="{{ $job->id }}" :favourited="{{ $job->checkSaved() ? 'true' : 'false' }}"></favourite-component>
                 @endif
             </div>
         </div>

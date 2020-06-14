@@ -38,6 +38,11 @@ class Job extends Model
                                         ->where('job_id', $this->id)->exists();
     }
 
+    public function checkSaved(){
+        return Favourite::where('user_id', Auth::id())
+            ->where('job_id', $this->id)->exists();
+    }
+
     public function getTitleAttribute($value){
         return Str::title($value);
     }
@@ -52,6 +57,10 @@ class Job extends Model
 
     public function getPositionAttribute($value){
         return Str::title($value);
+    }
+
+    public function favourites(){
+        return $this->belongsToMany(Job::class, 'favourites', 'job_id', 'user_id')->withTimestamps();
     }
 
 }

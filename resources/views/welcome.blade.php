@@ -36,7 +36,7 @@
         <div class="row">
             @foreach($companies as $company)
                 <div class="col-md-3">
-                    <div class="card" style="width: 18rem;">
+                    <div class="card">
                         <img src="{{ $company->cover_photo ? asset($company->cover_photo) : asset('cover/tumblr-image-sizes-banner.png') }}" class="card-img-top" height="150">
                         <div class="card-body">
                             <h5 class="card-title"><strong>{{ $company->company_name }}</strong></h5>

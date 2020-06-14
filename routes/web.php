@@ -34,6 +34,8 @@ Route::get('/jobs/all', 'JobController@allJobs')->name('all.jobs');
 Route::get('/save/{id}', 'FavouriteController@saveJob');
 Route::get('/unsave/{id}', 'FavouriteController@unSaveJob');
 
+///////////////////////////// Search Jobs //////////////////////
+Route::post('/jobs/search', 'JobController@searchJobs');
 
 // Companies
 Route::get('/company/{id}/{company}', 'CompanyController@show')->name('company.show');
@@ -53,4 +55,5 @@ Route::post('user/profile/update/avatar', 'UserProfileController@profileSeekerAv
 // Employer
 Route::view('employer/registration', 'auth.employer-registration')->name('employer');
 Route::post('employer/register', 'EmployerRegisterController@employerRegister')->name('employer.register');
+
 

@@ -4,6 +4,12 @@
     <div class="container">
         <h1>Recent Jobs</h1>
         <br>
+        <div class="row">
+            <div class="col-md-12">
+                <search-component></search-component>
+            </div>
+        </div>
+        <br>
         <div class="row justify-content-center">
             <table class="table table-hover">
                 <thead>

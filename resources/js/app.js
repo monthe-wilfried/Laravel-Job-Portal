@@ -22,6 +22,7 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('apply-component', require('./components/ApplyComponent').default);
 Vue.component('favourite-component', require('./components/FavouriteComponent').default);
+Vue.component('search-component', require('./components/SearchComponent').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

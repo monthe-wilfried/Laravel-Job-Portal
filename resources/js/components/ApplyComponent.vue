@@ -1,7 +1,7 @@
 <template>
     <div>
         <form @submit="submit">
-            <button v-if="show" type="submit" class="btn btn-sm btn-dark btn-block"><i class="fa fa-check" aria-hidden="true"></i> Apply</button>
+            <button v-if="show" type="submit" class="btn btn-sm btn-primary btn-block"><i class="icon-check" aria-hidden="true"></i> Apply</button>
 
             <div v-else class="alert alert-success">
                 <i class="fa fa-check-circle"></i> Application sent Successfully!

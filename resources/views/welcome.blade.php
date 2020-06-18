@@ -1,68 +1,135 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ config('app.name', 'JobPortal') }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-@section('content')
-    <div class="container">
-        <h1>Recent Jobs</h1>
-        <br>
-        <div class="row">
-            <div class="col-md-12">
-                <search-component></search-component>
+    @include('includes.head')
+
+</head>
+<body>
+
+<div class="site-wrap">
+
+    @include('includes.nav')
+
+    @include('includes.hero')
+
+    @include('includes.category')
+
+
+    <div class="site-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-5 mb-md-0" data-aos="fade-up" data-aos-delay="100">
+                    <h2 class="mb-5 h3">Recent Jobs</h2>
+                    <div class="rounded border jobs-wrap">
+
+                        @foreach($jobs as $job)
+                            <a href="{{ route('job.show', [$job->id, $job->slug]) }}" class="job-item d-block d-md-flex align-items-center  border-bottom fulltime">
+                                <div class="company-logo blank-logo text-center text-md-left pl-3">
+                                    <img src="{{ $job->company->logo ? asset($job->company->logo) : asset('avatar/man.jpg') }}" alt="Image" class="img-fluid mx-auto">
+                                </div>
+                                <div class="job-details h-100">
+                                    <div class="p-3 align-self-center">
+                                        <h3>{{ $job->position }}</h3>
+                                        <div class="d-block d-lg-flex">
+                                            <div class="mr-3"><span class="icon-home2 mr-1">{{ $job->company->company_name }}</span> </div>
+                                            <div class="mr-3"><span class="icon-room mr-1"></span> {{ $job->address }}</div>
+                                            <div><span class="icon-money mr-1"></span> {{ $job->salary }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="job-category align-self-center">
+                                    @if($job->type == 'Fulltime')
+                                        <div class="p-3">
+                                            <span class="text-info p-2 rounded border border-info">{{ $job->type }}</span>
+                                        </div>
+                                    @elseif($job->type == 'Part-Time')
+                                        <div class="p-3">
+                                            <span class="text-warning p-2 rounded border border-warning">{{ $job->type }}</span>
+                                        </div>
+                                    @else
+                                        <div class="p-3">
+                                            <span class="text-primary p-2 rounded border border-primary">{{ $job->type }}</span>
+                                        </div>
+                                    @endif
+                                </div>
+                            </a>
+                        @endforeach
+                    </div>
+
+                    <div class="col-md-12 text-center mt-5">
+                        <a href="{{ route('all.jobs') }}" class="btn btn-primary rounded py-3 px-5"><span class="icon-plus-circle"></span> Show More Jobs</a>
+                    </div>
+                </div>
             </div>
         </div>
-        <br>
-        <div class="row justify-content-center">
-            <table class="table table-hover">
-                <thead>
-                </thead>
-                <tbody>
-                @foreach($jobs as $job)
-                    <tr class="table-row" data-href="{{ route('job.show', [$job->id, $job->slug]) }}">
-                        <td><img src="{{ asset($job->company->logo) }}" width="70"></td>
-                        <td><a href="{{ route('job.show', [$job->id, $job->slug]) }}" class="fa"><span style="font-size: 17px;">{{ $job->position }}</span></a>
-                            <br>
-                            <i class="fa fa-clock-o"></i> <span style="font-size: 15px;">{{ $job->type }}</span>
-                        </td>
-                        <td><i class="fa fa-map-marker"></i> {{ $job->address }}</td>
-                        <td><i class="fa fa-calendar"></i> {{ $job->created_at->diffForHumans() }}</td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-        </div>
-
-        <div>
-            <a href="{{ route('all.jobs') }}" class="btn btn-dark btn-lg btn-block">Browse all Jobs</a>
-        </div>
-        <br><br>
-        <h1>Featured Companies</h1>
-        <br>
     </div>
 
-    <div class="container">
-        <div class="row">
-            @foreach($companies as $company)
-                <div class="col-md-3">
-                    <div class="card">
-                        <img src="{{ $company->cover_photo ? asset($company->cover_photo) : asset('cover/tumblr-image-sizes-banner.png') }}" class="card-img-top" height="150">
-                        <div class="card-body">
-                            <h5 class="card-title"><strong>{{ $company->company_name }}</strong></h5>
-                            <p class="card-text">{{ Str::limit($company->description, 30) }}</p>
-                            <a href="{{ route('company.show', [$company->id, $company->slug]) }}" class="btn btn-outline-primary">Visit Company</a>
-                        </div>
-                    </div>
-                    <br>
+    @include('includes.testimonial')
+
+
+    <div class="site-blocks-cover overlay inner-page" style="background-image: url('{{ asset('external/images/hero_1.jpg') }}');" data-aos="fade" data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-6 text-center" data-aos="fade">
+                    <h1 class="h3 mb-0">Your Dream Job</h1>
+                    <p class="h3 text-white mb-5">Is Waiting For You</p>
+                    <p>
+                        <a href="{{ route('register') }}" class="btn btn-outline-success py-3 px-4">Job Seeker</a>
+                        <a href="{{ route('employer') }}" class="btn btn-outline-warning py-3 px-4">Employer</a>
+                    </p>
+
                 </div>
-            @endforeach
+            </div>
         </div>
     </div>
-@endsection
 
-@section('scripts')
-    <script type="text/javascript">
-        $(document).ready(function($) {
-            $(".table-row").click(function() {
-                window.document.location = $(this).data("href");
-            });
-        });
-    </script>
-@endsection
+
+
+    <div class="site-section site-block-feature bg-light">
+        <div class="container">
+
+            <div class="text-center mb-5 section-heading">
+                <h2>Why Choose Us</h2>
+            </div>
+
+            <div class="d-block d-md-flex border-bottom">
+                <div class="text-center p-4 item border-right" data-aos="fade">
+                    <span class="flaticon-worker display-3 mb-3 d-block text-primary"></span>
+                    <h2 class="h4">More Jobs Every Day</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati reprehenderit explicabo quos fugit vitae dolorum.</p>
+                    <p><a href="#">Read More <span class="icon-arrow-right small"></span></a></p>
+                </div>
+                <div class="text-center p-4 item" data-aos="fade">
+                    <span class="flaticon-wrench display-3 mb-3 d-block text-primary"></span>
+                    <h2 class="h4">Creative Jobs</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati reprehenderit explicabo quos fugit vitae dolorum.</p>
+                    <p><a href="#">Read More <span class="icon-arrow-right small"></span></a></p>
+                </div>
+            </div>
+            <div class="d-block d-md-flex">
+                <div class="text-center p-4 item border-right" data-aos="fade">
+                    <span class="flaticon-stethoscope display-3 mb-3 d-block text-primary"></span>
+                    <h2 class="h4">Healthcare</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati reprehenderit explicabo quos fugit vitae dolorum.</p>
+                    <p><a href="#">Read More <span class="icon-arrow-right small"></span></a></p>
+                </div>
+                <div class="text-center p-4 item" data-aos="fade">
+                    <span class="flaticon-calculator display-3 mb-3 d-block text-primary"></span>
+                    <h2 class="h4">Finance &amp; Accounting</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati reprehenderit explicabo quos fugit vitae dolorum.</p>
+                    <p><a href="#">Read More <span class="icon-arrow-right small"></span></a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @include('includes.blog')
+
+    @include('includes.footer')
+
+</body>
+</html>

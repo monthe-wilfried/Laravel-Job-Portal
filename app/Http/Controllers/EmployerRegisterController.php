@@ -47,6 +47,6 @@ class EmployerRegisterController extends Controller
 
         $user->sendEmailVerificationNotification();
 
-        return redirect()->route('login')->with('info', 'Please verify your email by clicking the link sent to your email address.');
+        return redirect()->back()->with('info', 'Please verify your email by clicking the link sent to your email address.');
     }
 }

@@ -1,15 +1,16 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
     <div class="container">
-        @include('includes.flash_message')
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="margin-bottom: 8rem; margin-top: 10rem;">
             <div class="col-md-8">
                 <div class="card">
+                    @include('includes.flash_message')
                     <div class="card-header"><h3>Edit Job</h3></div>
 
                     <form action="{{ route('job.update') }}" method="post">
                         @csrf
+                        <input type="hidden" value="{{ $job->id }}" name="id">
 
                         <div class="card-body">
                             <div class="form-group">
@@ -82,19 +83,58 @@
                             </div>
 
                             <div class="form-group">
-                                @php
-                                    $types = ['casual', 'fulltime', 'part-time'];
-                                @endphp
+                                <label for="number_of_vacancy">No of vacancy:</label>
+                                <input type="text" name="number_of_vacancy" class="form-control{{ $errors->has('number_of_vacancy') ? ' is-invalid' : '' }}"  value="{{ old('number_of_vacancy', $job->number_of_vacancy) }}">
+                                @if ($errors->has('number_of_vacancy'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('number_of_vacancy') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
+                                <label for="experience">Year of experience:</label>
+                                <input type="text" name="experience" class="form-control{{ $errors->has('experience') ? ' is-invalid' : '' }}"  value="{{ old('experience', $job->experience) }}">
+                                @if ($errors->has('experience'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('experience') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
+                                <label for="type">Gender:</label>
+                                <select class="form-control" name="gender">
+                                    <option value="any" {{ $job->gender == 'any' ? 'selected': '' }}>Any</option>
+                                    <option value="male" {{ $job->gender == 'male' ? 'selected': '' }}>male</option>
+                                    <option value="female" {{ $job->gender == 'female' ? 'selected': '' }}>female</option>
+                                </select>
+                                @if ($errors->has('gender'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('gender') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
+                                <label for="type">Salary/year:</label>
+                                <select class="form-control" name="salary">
+                                    <option value="negotiable" {{ $job->salary == 'negotiable' ? 'selected': '' }}>Negotiable</option>
+                                    <option value="2000-5000" {{ $job->salary == '2000-5000' ? 'selected': '' }}>2000-5000</option>
+                                    <option value="50000-10000" {{ $job->salary == '50000-10000' ? 'selected': '' }}>5000-10000</option>
+                                    <option value="10000-20000" {{ $job->salary == '10000-20000' ? 'selected': '' }}>10000-20000</option>
+                                    <option value="30000-500000" {{ $job->salary == '30000-500000' ? 'selected': '' }}>50000-500000</option>
+                                    <option value="500000-600000" {{ $job->salary == '500000-600000' ? 'selected': '' }}>500000-600000</option>
+                                    <option value="600000 plus" {{ $job->salary == '600000 plus' ? 'selected': '' }}>600000 plus</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="type">Type</label>
-                                <select name="type" class="form-control @error('type') is-invalid @enderror">
-                                    <option value="">Select type...</option>
-                                    @foreach($types as $type)
-                                        <option value="{{ $type }}"
-                                        @if($type == $job->type)
-                                           selected
-                                        @endif
-                                        >{{ $type }}</option>
-                                    @endforeach
+                                <select class="form-control" name="type">
+                                    <option value="fulltime" {{$job->type=='fulltime'?'selected':''}}>fulltime</option>
+                                    <option value="part-time" {{$job->type=='part-time'?'selected':''}}>part-time</option>
+                                    <option value="casual" {{$job->type=='casual'?'selected':''}}>casual</option>
                                 </select>
                                 @error('type')
                                 <div class="error" style="color: red">
@@ -109,7 +149,6 @@
                                 @endphp
                                 <label for="status">Status</label>
                                 <select name="status" class="form-control @error('status') is-invalid @enderror">
-                                    <option value="">Select status...</option>
                                     @foreach($status as $key => $row)
                                         <option value="{{ $key }}"
                                         @if($key == $job->status)

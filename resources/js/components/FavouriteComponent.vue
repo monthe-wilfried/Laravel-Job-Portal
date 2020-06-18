@@ -1,7 +1,7 @@
 <template>
     <div>
-        <button v-if="show" @click.prevent="unsave()" class="btn btn-sm btn-dark btn-block"><i class="fa fa-heart" aria-hidden="true"></i> Unsave</button>
-        <button v-else @click.prevent="save()" class="btn btn-sm btn-outline-primary btn-block"><i class="fa fa-heart-o" aria-hidden="true"></i> Save</button>
+        <button v-if="show" @click.prevent="unsave()" class="btn btn-sm btn-dark btn-block"><i class="icon-heart" aria-hidden="true"></i> Unsave</button>
+        <button v-else @click.prevent="save()" class="btn btn-sm btn-outline-primary btn-block"><i class="icon-heart-o" aria-hidden="true"></i> Save</button>
     </div>
 </template>
 

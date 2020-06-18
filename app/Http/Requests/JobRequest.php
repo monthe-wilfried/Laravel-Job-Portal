@@ -34,6 +34,8 @@ class JobRequest extends FormRequest
             'type' => 'required',
             'deadline' => 'required',
             'status' => 'required',
+            'number_of_vacancy' => 'required|numeric',
+            'experience' => 'required|numeric',
         ];
     }
 }

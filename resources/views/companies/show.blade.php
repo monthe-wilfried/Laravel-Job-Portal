@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12" style="margin-top: 8rem; margin-bottom: 8rem;">
                 <div class="company-profile">
                     <img src="{{ $company->cover_photo ? asset($company->cover_photo) : asset('cover/tumblr-image-sizes-banner.png') }}" style="width: 100%;">
                     <div class="company-description">
@@ -17,32 +17,50 @@
                         </div>
                         <h1>{{ $company->company_name }}</h1>
                         <div class="row text-center">
-                            <div class="col-md-3"><i class="fa fa-lightbulb-o"></i> <strong>Slogan:</strong> {{ $company->slogan }}</div>
-                            <div class="col-md-3"><i class="fa fa-map-marker"></i> {{ $company->address }}</div>
-                            <div class="col-md-3"><i class="fa fa-phone"></i> {{ $company->phone }}</div>
-                            <div class="col-md-3"><i class="fa fa-globe"></i> <a href="{{ $company->website }}" target="_blank">{{ $company->website }}</a></div>
+                            <div class="col-md-3"><i class="icon-lightbulb-o"></i> <strong>Slogan:</strong> {{ $company->slogan }}</div>
+                            <div class="col-md-3"><i class="icon-map-marker"></i> {{ $company->address }}</div>
+                            <div class="col-md-3"><i class="icon-phone"></i> {{ $company->phone }}</div>
+                            <div class="col-md-3"><i class="icon-globe"></i> <a href="{{ $company->website }}" target="_blank">{{ $company->website }}</a></div>
                         </div>
                     </div>
                 </div>
                 <br>
                 <h4 style="margin-top: 3rem">Job Vacancies</h4>
-                <table class="table table-hover">
-                    <thead>
-                    </thead>
-                    <tbody>
+                <div class="rounded border jobs-wrap">
+
                     @foreach($company->jobs as $job)
-                        <tr class="table-row" data-href="{{ route('job.show', [$job->id, $job->slug]) }}">
-                            <td><img src="{{ asset($job->company->logo) }}" width="70"></td>
-                            <td><a href="{{ route('job.show', [$job->id, $job->slug]) }}" class="fa"><span style="font-size: 17px;">{{ $job->position }}</span></a>
-                                <br>
-                                <i class="fa fa-clock-o"></i> <span style="font-size: 15px;">{{ $job->type }}</span>
-                            </td>
-                            <td><i class="fa fa-map-marker"></i> {{ $job->address }}</td>
-                            <td><i class="fa fa-calendar"></i> {{ $job->created_at->diffForHumans() }}</td>
-                        </tr>
+                        <a href="{{ route('job.show', [$job->id, $job->slug]) }}" class="job-item d-block d-md-flex align-items-center  border-bottom fulltime">
+                            <div class="company-logo blank-logo text-center text-md-left pl-3">
+                                <img src="{{ $job->company->logo ? asset($job->company->logo) : asset('avatar/man.jpg') }}" alt="Image" class="img-fluid mx-auto">
+                            </div>
+                            <div class="job-details h-100">
+                                <div class="p-3 align-self-center">
+                                    <h3>{{ $job->position }}</h3>
+                                    <div class="d-block d-lg-flex">
+                                        <div class="mr-3"><span class="icon-home2 mr-1">{{ $job->company->company_name }}</span> </div>
+                                        <div class="mr-3"><span class="icon-room mr-1"></span> {{ $job->address }}</div>
+                                        <div><span class="icon-money mr-1"></span> {{ $job->salary }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="job-category align-self-center">
+                                @if($job->type == 'Fulltime')
+                                    <div class="p-3">
+                                        <span class="text-info p-2 rounded border border-info">{{ $job->type }}</span>
+                                    </div>
+                                @elseif($job->type == 'Part-Time')
+                                    <div class="p-3">
+                                        <span class="text-warning p-2 rounded border border-warning">{{ $job->type }}</span>
+                                    </div>
+                                @else
+                                    <div class="p-3">
+                                        <span class="text-primary p-2 rounded border border-primary">{{ $job->type }}</span>
+                                    </div>
+                                @endif
+                            </div>
+                        </a>
                     @endforeach
-                    </tbody>
-                </table>
+                </div>
             </div>
             </div>
 

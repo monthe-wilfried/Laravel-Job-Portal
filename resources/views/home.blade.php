@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" style="margin-top: 10rem; margin-bottom: 8rem;">
         <div class="col-md-10">
             @if(Auth::user()->user_type == 'seeker')
                 @foreach($jobs as $job)

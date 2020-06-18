@@ -13,12 +13,17 @@ class CompanyController extends Controller
     //
     public function __construct()
     {
-        $this->middleware(['employer', 'verified'], ['except'=>['show']]);
+        $this->middleware(['employer', 'verified'], ['except'=>['show', 'company']]);
     }
 
     public function show($id, $company){
         $company = Company::findOrfail($id);
         return view('companies.show', compact('company'));
+    }
+
+    public function company(){
+        $companies = Company::paginate(12);
+        return view('companies.companies', compact('companies'));
     }
 
     public function companyProfile(){

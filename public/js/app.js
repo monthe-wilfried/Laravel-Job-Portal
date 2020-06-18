@@ -37636,12 +37636,12 @@ var render = function() {
         ? _c(
             "button",
             {
-              staticClass: "btn btn-sm btn-dark btn-block",
+              staticClass: "btn btn-sm btn-primary btn-block",
               attrs: { type: "submit" }
             },
             [
               _c("i", {
-                staticClass: "fa fa-check",
+                staticClass: "icon-check",
                 attrs: { "aria-hidden": "true" }
               }),
               _vm._v(" Apply")
@@ -37738,7 +37738,7 @@ var render = function() {
           },
           [
             _c("i", {
-              staticClass: "fa fa-heart",
+              staticClass: "icon-heart",
               attrs: { "aria-hidden": "true" }
             }),
             _vm._v(" Unsave")
@@ -37757,7 +37757,7 @@ var render = function() {
           },
           [
             _c("i", {
-              staticClass: "fa fa-heart-o",
+              staticClass: "icon-heart-o",
               attrs: { "aria-hidden": "true" }
             }),
             _vm._v(" Save")

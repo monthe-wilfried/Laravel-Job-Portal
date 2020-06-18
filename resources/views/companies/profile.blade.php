@@ -1,12 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
     <div class="container">
         @include('includes.flash_message')
-        <div class="row">
+        <div class="row" style="margin-bottom: 8rem; margin-top: 12rem;">
             <div class="col-md-3 text-center">
 
-                <img src="{{ Auth::user()->company->logo ? asset(Auth::user()->company->logo) :asset('avatar/serwman1.jpg')  }}" class="rounded-circle" id="one"  style="width: 100%;">
+                <img src="{{ Auth::user()->company->logo ? asset(Auth::user()->company->logo) : asset('avatar/serwman1.jpg')  }}" class="rounded-circle" id="one"  style="width: 100%;">
                 <form action="{{ route('company.profile.logo') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <br>
@@ -102,7 +102,7 @@
                         @endif
                         <li class="list-group-item"><strong>Member Since:</strong><span class="float-right">{{ date('F j, Y', strtotime(Auth::user()->created_at)) }}</span></li>
                         <li class="list-group-item"><strong>Company Page:</strong><span class="float-right"><a
-                                    href="{{ route('company.show', [Auth::user()->company->id, Auth::user()->company->slug]) }}"><i class="fa fa-eye"></i> View</a></span></li>
+                                    href="{{ route('company.show', [Auth::user()->company->id, Auth::user()->company->slug]) }}"><i class="icon-eye"></i> View</a></span></li>
                     </ul>
                 </div>
                 <br>

@@ -19,15 +19,45 @@ class JobController extends Controller
     }
 
     public function index(){
-        $jobs = Job::all()->random(10);
+        $jobs = Job::latest()->where('status', 1)->whereDate('deadline','>',date('Y-F-d'))->limit(10)->get();
         $categories = Category::with('jobs')->get();
 //        $companies = Company::all()->random(8);
         return view('welcome', compact('jobs', 'categories'));
     }
 
     public function show($id, $job){
-        $job = Job::findOrfail($id);
-        return view('jobs.show', compact('job'));
+        $job = Job::whereId($id)->where('slug', $job)->first();
+
+        $data = array();
+        $jobsBasedOnCategories = Job::latest()
+            ->where('category_id', $job->category_id)
+            ->whereDate('deadline','>',date('Y-F-d'))
+            ->where('id', "!=", $job->id)
+            ->where('status', 1)
+            ->limit(6)
+            ->get();
+        $jobsBasedOnCompanies = Job::latest()
+            ->where('company_id', $job->company_id)
+            ->whereDate('deadline','>',date('Y-F-d'))
+            ->where('id', "!=", $job->id)
+            ->where('status', 1)
+            ->limit(6)
+            ->get();
+        $jobsBasedOnPositions = Job::latest()
+            ->where('position', 'LIKE', '%'.$job->position.'%')
+            ->whereDate('deadline','>',date('Y-F-d'))
+            ->where('id', "!=", $job->id)
+            ->where('status', 1)
+            ->limit(6)
+            ->get();
+        array_push($data, $jobsBasedOnCategories, $jobsBasedOnCompanies, $jobsBasedOnPositions);
+        // Converts this array into a collection
+        $collection = collect($data);
+        // Here i am removing duplicated jobs based on the id
+        $unique = $collection->collapse(); // collapse()
+        $jobRecommendations = $unique->values()->all();
+        return view('jobs.show', compact('job', 'jobRecommendations'));
+
     }
 
     public function myJobs(){

@@ -68,29 +68,32 @@
                                     <apply-component :jobid="{{ $job->id }}"></apply-component>
                                 @else
                                     <a class="btn btn-dark btn-block" href="{{ route('user.profile') }}"><i class="icon-check"></i> Apply</a>
-                                    <p class="text-center"><small style="color: darkred"><strong>Upload your Cover Letter and Resume in other to apply</strong></small></p>
-                                @endif
-                            @else
-                                <span class="btn btn-block" style="background-color: rgba(131,146,143,0.89); color: white; cursor: default;">Already Applied!</span>
-                            @endif
-                            <br>
-                            <favourite-component :jobid="{{ $job->id }}" :favourited="{{ $job->checkSaved() ? 'true' : 'false' }}"></favourite-component>
-                        @else
-                            <p class="bg-secondary text-center" style="color: white;">Please login to apply this job</p>
+                    <p class="text-center"><small style="color: darkred"><strong>Upload your Cover Letter and Resume in other to apply</strong></small></p>
+                    @endif
+                    @else
+                        <span class="btn btn-block" style="background-color: rgba(131,146,143,0.89); color: white; cursor: default;">Already Applied!</span>
+                    @endif
+                    <br>
+                    <favourite-component :jobid="{{ $job->id }}" :favourited="{{ $job->checkSaved() ? 'true' : 'false' }}"></favourite-component>
+                    @else
+                        <p class="bg-secondary text-center" style="color: white;">Please login to apply this job</p>
                         @endif
                         </p>
 
                 </div>
-            {{--                @foreach($jobRecommendations as $jobRecommendation)--}}
-            {{--                    <div class="card" style="width: 18rem;">--}}
-            {{--                        <div class="card-body">--}}
-            {{--                            <p class="badge badge-success">{{$jobRecommendation->type}}</p>--}}
-            {{--                            <h5 class="card-title">{{$jobRecommendation->position}}</h5>--}}
-            {{--                            <p class="card-text">{{str_limit($jobRecommendation->description,90)}}--}}
-            {{--                            <center> <a href="{{route('jobs.show',[$jobRecommendation->id,$jobRecommendation->slug])}}" class="btn btn-success">Apply</a></center>--}}
-            {{--                        </div>--}}
-            {{--                    </div>--}}
-            {{--                @endforeach--}}
+
+                @foreach($jobRecommendations as $jobRecommendation)
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="badge badge-success">{{$jobRecommendation->type}}</p>
+                                <h5 class="card-title">{{$jobRecommendation->position}}</h5>
+                                <p class="card-text">{{str_limit($jobRecommendation->description,90)}}</p>
+                                <div style="text-align: center;"> <a href="{{route('job.show',[$jobRecommendation->id,$jobRecommendation->slug])}}" class="btn btn-success">Apply</a></div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
 
 
             <!-- Modal -->

@@ -2,10 +2,9 @@
 
 @section('content')
     <div class="album text-muted">
-        <div class="container">
-            @include('includes.flash_message')
-
+        <div class="container" style="margin-top: 3rem;">
             <div class="row" id="app"> <!-- the id app is used to display vue JS components -->
+
                 <div class="title" style="margin-top: 8rem; padding-left: 1rem;">
                     <h2>{{$job->title}}</h2>
                 </div>
@@ -13,37 +12,37 @@
                 <img src="{{asset('hero-job-image.jpg')}}" style="width: 100%;">
 
                 <div class="col-lg-8">
-
-
+                    <br>
+                    @include('includes.flash_message')
                     <div class="p-4 mb-8 bg-white">
                         <!-- icon-book mr-3-->
-                        <h3 class="h5 text-black mb-3"><i class="fa fa-book" style="color: blue;">&nbsp;</i>Description <a href="#"data-toggle="modal" data-target="#exampleModal1"><i class="fa fa-envelope-square" style="font-size: 34px;float:right;color:green;"></i></a></h3>
+                        <h3 class="h5 text-black mb-3">Description <a href="#" title="Mail this Job to a Friend" data-toggle="modal" data-target="#exampleModal1"><i class="icon-envelope-square" style="font-size: 34px;float:right;color:green;"></i><i class="icon-hand-o-right float-right" style="margin-right: 4px;"></i></a></h3>
                         <p> {{$job->description}}.</p>
 
                     </div>
                     <div class="p-4 mb-8 bg-white">
                         <!--icon-align-left mr-3-->
-                        <h3 class="h5 text-black mb-3"><i class="fa fa-user" style="color: blue;">&nbsp;</i>Roles and Responsibilities</h3>
+                        <h3 class="h5 text-black mb-3">Roles and Responsibilities</h3>
                         <p>{{$job->roles}} .</p>
 
                     </div>
                     <div class="p-4 mb-8 bg-white">
-                        <h3 class="h5 text-black mb-3"><i class="fa fa-users" style="color: blue;">&nbsp;</i>Number of vacancy</h3>
+                        <h3 class="h5 text-black mb-3">Number of vacancy</h3>
                         <p>{{$job->number_of_vacancy}}</p>
 
                     </div>
                     <div class="p-4 mb-8 bg-white">
-                        <h3 class="h5 text-black mb-3"><i class="fa fa-clock-o" style="color: blue;">&nbsp;</i>Experience</h3>
+                        <h3 class="h5 text-black mb-3">Experience</h3>
                         <p>{{$job->experience}} years</p>
 
                     </div>
                     <div class="p-4 mb-8 bg-white">
-                        <h3 class="h5 text-black mb-3"><i class="fa fa-venus-mars" style="color: blue;">&nbsp;</i>Gender</h3>
+                        <h3 class="h5 text-black mb-3">Gender</h3>
                         <p>{{$job->gender}} </p>
 
                     </div>
                     <div class="p-4 mb-8 bg-white">
-                        <h3 class="h5 text-black mb-3"><i class="fa fa-dollar" style="color: blue;">&nbsp;</i>Salary</h3>
+                        <h3 class="h5 text-black mb-3">Salary</h3>
                         <p>{{$job->salary}}</p>
                     </div>
 
@@ -105,7 +104,8 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="" method="POST">@csrf
+                            <form action="{{ route('mail') }}" method="POST">
+                                @csrf
 
                                 <div class="modal-body">
                                     <input type="hidden" name="job_id" value="{{$job->id}}">
@@ -113,25 +113,25 @@
 
                                     <div class="form-goup">
                                         <label>Your name * </label>
-                                        <input type="text" name="your_name" class="form-control" required="">
+                                        <input type="text" name="your_name" placeholder="Enter your name" class="form-control" required>
                                     </div>
                                     <div class="form-goup">
                                         <label>Your email *</label>
-                                        <input type="email" name="your_email" class="form-control" required="">
+                                        <input type="email" name="your_email" placeholder="Enter your email" class="form-control" required>
                                     </div>
                                     <div class="form-goup">
                                         <label>Person name *</label>
-                                        <input type="text" name="friend_name" class="form-control" required="">
+                                        <input type="text" name="friend_name" placeholder="Enter your friend's name" class="form-control" required>
                                     </div>
                                     <div class="form-goup">
                                         <label>Person email *</label>
-                                        <input type="email" name="friend_email" class="form-control" required="">
+                                        <input type="email" name="friend_email" placeholder="Enter your friend's email" class="form-control" required>
                                     </div>
 
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Mail this job</button>
+                                    <button type="submit" class="btn btn-primary">Mail this Job</button>
                                 </div>
                             </form>
                         </div>

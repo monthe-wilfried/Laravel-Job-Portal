@@ -59,3 +59,6 @@ Route::post('employer/register', 'EmployerRegisterController@employerRegister')-
 
 // Category
 Route::get('category/{id}/jobs', 'CategoryController@index')->name('category.jobs');
+
+// Email
+Route::post('job/mail', 'MailController@sendMail')->name('mail');

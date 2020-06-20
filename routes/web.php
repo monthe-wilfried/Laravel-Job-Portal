@@ -39,7 +39,7 @@ Route::post('/jobs/search', 'JobController@searchJobs');
 
 // Companies
 Route::get('/companies', 'CompanyController@company')->name('company');
-Route::get('/company/{id}/{company}', 'CompanyController@show')->name('company.show');
+Route::get('/company/{id}/{slug}', 'CompanyController@show')->name('company.show');
 Route::get('/company/profile', 'CompanyController@companyProfile')->name('company.profile');
 Route::post('/company/profile/update', 'CompanyController@companyProfileUpdate')->name('company.profile.update');
 Route::post('/company/profile/cover', 'CompanyController@companyProfileCover')->name('company.profile.cover');
@@ -62,3 +62,29 @@ Route::get('category/{id}/jobs', 'CategoryController@index')->name('category.job
 
 // Email
 Route::post('job/mail', 'MailController@sendMail')->name('mail');
+
+
+// Admin
+Route::get('dashboard', 'AdminController@index')->name('dashboard');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

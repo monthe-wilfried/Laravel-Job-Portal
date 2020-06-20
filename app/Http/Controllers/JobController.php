@@ -61,7 +61,7 @@ class JobController extends Controller
     }
 
     public function myJobs(){
-        $jobs = Job::where('user_id', Auth::id())->paginate(10);
+        $jobs = Job::where('company_id', Auth::user()->company->id)->paginate(10);
         return view('jobs.my-jobs', compact('jobs'));
     }
 
@@ -100,7 +100,7 @@ class JobController extends Controller
     }
 
     public function applicants(){
-        $jobs = Job::has('users')->where('user_id', Auth::id())->get();
+        $jobs = Job::with('users')->where('user_id', Auth::id())->get();
         return view('jobs.applicants', compact('jobs'));
     }
 

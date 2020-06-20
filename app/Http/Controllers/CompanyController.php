@@ -16,8 +16,8 @@ class CompanyController extends Controller
         $this->middleware(['employer', 'verified'], ['except'=>['show', 'company']]);
     }
 
-    public function show($id, $company){
-        $company = Company::findOrfail($id);
+    public function show($id, $slug){
+        $company = Company::whereId($id)->where('slug',$slug)->first();
         return view('companies.show', compact('company'));
     }
 

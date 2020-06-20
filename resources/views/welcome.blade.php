@@ -127,8 +127,6 @@
         </div>
     </div>
 
-    @include('includes.blog')
-
     @include('includes.footer')
 
 </body>

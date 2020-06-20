@@ -1,9 +1,9 @@
 @extends('layouts.main')
 
 @section('content')
-    <div class="container">
+    <div class="container" style="margin-bottom: 8rem; margin-top: 12rem;">
         @include('includes.flash_message')
-        <div class="row" style="margin-bottom: 8rem; margin-top: 12rem;">
+        <div class="row">
             <div class="col-md-3 text-center">
 
                 <img src="{{ Auth::user()->company->logo ? asset(Auth::user()->company->logo) : asset('avatar/serwman1.jpg')  }}" class="rounded-circle" id="one"  style="width: 100%;">

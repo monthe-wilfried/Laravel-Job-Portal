@@ -11,41 +11,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7911c4d4-c701-4c1f-a116-faef9d898bf0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/AdminMiddleware.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Role.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_06_19_224157_create_roles_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_06_19_225250_create_role_user_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/avatar/1669946096161199.teeth-1670434_640.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/avatar/1669946210656487.browser-773215_640.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/avatar/1669946468100524.monogram-2953819_640.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/avatar/1669946642908373.red-1618916_640.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/avatar/1669946750730503.floral-2622313_640.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/avatar/1669949940182690.dab-1692452_640.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/avatar/1669950048299996.logo-1933884_640.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/avatar/1669950118061864.logo-2144403_640.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/avatar/1669950225662090.work-4156942_640.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/avatar/1669950332446240.logo-2150297_640.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/avatar/1669950634232708.cat-1484725_640.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/avatar/1669950690055949.logo-1446293_640.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/avatar/1669950747739413.logo-1932539_640.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/avatar/1669950898209510.logo-1746083_640.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/avatar/1669950958987069.logo-1871975_640.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/avatar/1669951054379439.trophy-1674911_640.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/avatar/1669951319373395.fire-303309_640.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/avatar/1669968003811572.education-3670453_640.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/docs/1669968223485828.Aufgabe.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/docs/1669968235479241.Aufgabe.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/cover/1669975310658198.vr-3460451_640 (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/cover/1669975565362914.books-1163695_640 (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/cover/1669975722361561.bugatti-631368_640 (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/cover/1669975892341949.hands-5216585_640 (1).jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CompanyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CompanyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/JobController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/JobController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/avatar/man.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/avatar/man.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/profile/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/cover/tumblr-image-sizes-banner.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/companies/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/companies/profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,7 +194,7 @@
       <workItem from="1592252223497" duration="50000" />
       <workItem from="1592271058148" duration="19000" />
       <workItem from="1592468330988" duration="47291000" />
-      <workItem from="1592572569070" duration="19076000" />
+      <workItem from="1592572569070" duration="21236000" />
     </task>
     <servers />
   </component>
